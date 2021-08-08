@@ -247,3 +247,145 @@ for (let contadorClientes = 0; contadorClientes <= clientes.length -1; contadorC
 }
 
 document.querySelector('#listaClientes').innerHTML = lista
+
+/*
+  LAÇO DE REPETIÇÃO - FOR OF
+*/
+
+let clientesPerfil = [
+  {
+    nome: 'Patrick',
+    idade: 35,
+    linguagens: ['javascript', 'html', 'css']
+  },
+  {
+    nome: 'Tatiana',
+    idade: 36,
+    linguagens: ['javascript', 'c++', 'python']
+  },
+  {
+    nome: 'Cristine',
+    idade: 34,
+    linguagens: ['c', 'c#', 'sql']
+  }
+]
+
+// utilizando o laço FOR seria assim:
+
+for (let contadorClientesPerfil = 0; contadorClientesPerfil < clientesPerfil.length; contadorClientesPerfil++) { //se colocar [contadorClientesPerfil < clientesPerfil.length] sem <= não precisa do [-1]
+  console.log(clientesPerfil[contadorClientesPerfil].nome) //vai correr pelo nome do contadorClientePerfil e listar todos
+}
+
+// nesse caso, o laço mais indicado seria o FOR OF
+
+for (let clienteMelhorSistema of clientesPerfil) {
+  console.log(clienteMelhorSistema.nome)
+  console.log(clienteMelhorSistema.idade)
+}
+
+// EXEMPLO DE LISTA DE CLIENTES COM INFORMAÇÕES
+// deixar lindão agora
+
+let htmlClientes = '' //variável para armazenar a lista de clientes que aparecerá no site
+
+for (let clientesCompleto of clientesPerfil) { // criação de variável clientesCompleto que vai percorrer a lista de clientesPerfil
+
+  let listaLinguagens = '' // criação de variável que vai listar as linguagens separadamente
+
+  for (let linguagem of clientesCompleto.linguagens) { //criação de variável linguagem que vai percorrer as linguabens de clientesCompleto
+    listaLinguagens += `<li>${linguagem}</li>` // formatação das linguabens e armazenamento em listaLinguagens para imprimir depois na lista
+  }
+  
+  htmlClientes += ` 
+    <li>
+      <b>Nome:</b> ${clientesCompleto.nome}<br>
+      <b>Idade:</b> ${clientesCompleto.idade}<br>
+      <b>Linguagens</b><br>
+      <ul>
+        ${listaLinguagens}
+      </ul>
+    </li>
+  ` // formatação de htmlClientes para aparecer no HTML
+
+}
+
+document.querySelector('#listaClientesCompleta').innerHTML = htmlClientes // função que imprime htmlClientes na div id #listaClientesCompleta
+
+/* LAÇO DE REPETIÇÃO - WHILE
+  Cuidado! se não colocar o incremento, entra em loop infinito e trava o navegador
+  isso é chamdo de STACK OVERFLOW (estouro da pilha, ele empilha o código até esgotar a memória do computador)
+*/
+
+let contadorExemplo = 0
+
+while (contadorExemplo < 100) {
+  console.log('Hello world')
+
+  contadorExemplo ++
+}
+
+/*  FUNÇÕES
+deixar algo guardado para executar apenas quando for solicitado
+*/
+
+// cria a função:
+
+function nomeDaFuncao () {
+  console.log('Hello world - da função')
+}
+
+//agora chama a função:
+
+nomeDaFuncao()
+
+// função pode receber PARÂMETROS/ARGUMENTOS
+
+function escreverNoConsole (mensagem) {
+  console.log(mensagem)
+}
+
+escreverNoConsole('Olá Mundo')
+escreverNoConsole('aqui eu coloco a conteúdo do parâmetro "mensagem"')
+escreverNoConsole('e posso chamar a função quando quiser com o parãmentro que quiser')
+
+// função com dois parâmetros
+
+function mensagemComDoisParametros (parametro1, nome) {
+  console.log(`Olá ${nome}, ${parametro1}`)
+}
+
+mensagemComDoisParametros('seja muito bem vindo!', 'Patrick')
+
+/* FUNÇÕES JÁ EXISTENTES - exemplos
+
+  parseInt('12') - transforma em número
+  console.log('argumento') - imprime argumento no console
+  document.querySelector('#elementoNaTela') - pega o elemento na tela para executar alguma coisa
+
+*/
+
+/*  RETURN
+  com o return posso utilizar o retorno onde eu quiser
+*/
+
+function soma (num1, num2) {
+  return num1 + num2
+}
+
+let resultado = soma(10, 5)
+
+console.log(resultado)
+
+document.write(resultado)
+
+function milhasEmKm (milhas) {
+  let km = milhas * 1.6
+
+  return km
+}
+
+let resultadoKm = milhasEmKm (150)
+
+document.write('<br>')
+
+document.write(resultadoKm)
